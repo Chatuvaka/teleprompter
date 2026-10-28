@@ -1,0 +1,570 @@
+:root {
+  --bg-deep: #0a0c10;
+  --amoled-black: #000000;
+  --neon-green: #00ffa3;
+  --neon-cyan: #00e5ff;
+  --neon-amber: #ffb703;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  --case-metal: linear-gradient(135deg, #3a3f47 0%, #1f2226 50%, #121417 100%);
+  --case-border: #4a525d;
+  --crown-color: #2b3038;
+  --touch-cue-color: rgba(0, 255, 163, 0.15);
+  --fit3-width: 402px;
+  --fit3-height: 480px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* ========================================================
+   HEADER SUPERIOR (DESKTOP)
+   ======================================================== */
+.desktop-header {
+  width: 100%;
+  max-width: 900px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--neon-cyan);
+}
+
+.main-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.main-title .highlight {
+  color: var(--neon-green);
+}
+
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.status-dot.connected {
+  background-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.status-dot.disconnected {
+  background-color: #ff3366;
+  box-shadow: 0 0 8px #ff3366;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-action {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--neon-green);
+}
+
+/* ========================================================
+   MARCO SMARTWATCH (HUAWEI WATCH FIT 3)
+   ======================================================== */
+.viewport-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.watch-case {
+  position: relative;
+  background: var(--case-metal);
+  padding: 16px;
+  border-radius: 64px;
+  border: 2px solid var(--case-border);
+  box-shadow: 
+    0 25px 60px -15px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 15px 35px rgba(0, 255, 163, 0.08);
+  transition: transform 0.2s ease;
+}
+
+/* Corona digital de hardware en el lateral derecho */
+.digital-crown {
+  position: absolute;
+  right: -14px;
+  top: 90px;
+  width: 14px;
+  height: 68px;
+  background: var(--crown-color);
+  border-radius: 6px 4px 4px 6px;
+  border: 1px solid #5a626d;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  cursor: ns-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.crown-ridges {
+  width: 100%;
+  height: 80%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(255, 255, 255, 0.25) 3px,
+    rgba(255, 255, 255, 0.25) 5px
+  );
+  animation: crownRotate 0s linear;
+}
+
+/* Botón secundario inferior */
+.function-button {
+  position: absolute;
+  right: -10px;
+  top: 180px;
+  width: 10px;
+  height: 48px;
+  background: #25282e;
+  border-radius: 4px 2px 2px 4px;
+  border: 1px solid #444a53;
+  cursor: pointer;
+}
+
+.function-button:active {
+  transform: translateX(-2px);
+}
+
+/* ========================================================
+   PANTALLA AMOLED (402 x 480 px)
+   ======================================================== */
+.amoled-screen {
+  position: relative;
+  width: var(--fit3-width);
+  height: var(--fit3-height);
+  background-color: var(--amoled-black);
+  border-radius: 48px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0 2px #0a0a0a inset;
+}
+
+/* Barra de Estado interna del reloj */
+.watch-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px 8px 24px;
+  z-index: 5;
+}
+
+.watch-clock {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.slide-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.current-slide {
+  color: var(--neon-green);
+  font-size: 14px;
+}
+
+.slide-divider {
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
+.total-slides {
+  color: var(--text-secondary);
+}
+
+.connection-icon {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1.5px solid var(--neon-green);
+  animation: pulseEffect 2s infinite ease-out;
+}
+
+@keyframes pulseEffect {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Encabezado con título de Diapositiva */
+.slide-header {
+  padding: 4px 24px 8px 24px;
+  z-index: 5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.slide-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================================
+   ÁREA DE TELEPROMPTER & TEXTO
+   ======================================================== */
+.teleprompter-viewport {
+  flex: 1;
+  padding: 16px 24px 60px 24px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  position: relative;
+  /* Scrollbar oculta estilo Wearable */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.teleprompter-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.teleprompter-content {
+  font-size: 21px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  letter-spacing: 0.2px;
+  transition: font-size 0.15s ease;
+  word-break: break-word;
+}
+
+.teleprompter-content p {
+  margin-bottom: 14px;
+}
+
+/* Controles de lectura flotantes */
+.reading-controls {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(22, 25, 31, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 24px;
+  z-index: 20;
+}
+
+.btn-micro {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn-micro:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-autoscroll {
+  background: var(--neon-green);
+  color: #000;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.btn-autoscroll.active {
+  background: var(--neon-amber);
+}
+
+.speed-selector {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+/* Zonas táctiles en bordes (Edge Taps) */
+.touch-edge {
+  position: absolute;
+  top: 70px;
+  bottom: 60px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.2;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+
+.edge-left {
+  left: 0;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.edge-right {
+  right: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.touch-edge:hover, .touch-edge:active {
+  opacity: 1;
+  background: var(--touch-cue-color);
+}
+
+.touch-cue {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--neon-green);
+}
+
+/* Flash de feedback háptico */
+.haptic-flash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgba(0, 255, 163, 0.25);
+  opacity: 0;
+  transition: opacity 0.08s ease;
+  z-index: 30;
+}
+
+.haptic-flash.flash-active {
+  opacity: 1;
+}
+
+/* ========================================================
+   TOOLBAR INFERIOR
+   ======================================================== */
+.simulator-toolbar {
+  width: 100%;
+  max-width: 900px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: rgba(15, 18, 24, 0.7);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.toolbar-shortcuts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shortcut-chip {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+.toolbar-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-tool {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.18s ease;
+}
+
+.btn-tool:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-tool.btn-primary {
+  background: var(--neon-green);
+  color: #000;
+  border-color: var(--neon-green);
+}
+
+.btn-tool.btn-primary:hover {
+  background: #00e08f;
+  box-shadow: 0 0 15px rgba(0, 255, 163, 0.4);
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (VISTA TELÉFONO MÓVIL DIRECTA)
+   ======================================================== */
+@media (max-width: 600px) {
+  .desktop-header, .simulator-toolbar {
+    display: none;
+  }
+
+  body {
+    background-color: #000;
+    justify-content: center;
+  }
+
+  .viewport-wrapper {
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .watch-case {
+    background: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .digital-crown, .function-button {
+    display: none;
+  }
+
+  .amoled-screen {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .teleprompter-content {
+    font-size: 24px;
+  }
+}

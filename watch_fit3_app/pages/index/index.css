@@ -1,0 +1,156 @@
+.container {
+  width: 402px;
+  height: 480px;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barra de estado */
+.status-bar {
+  width: 402px;
+  height: 44px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 10px;
+}
+
+.time-text {
+  font-size: 16px;
+  color: #aaaaaa;
+}
+
+.slide-badge {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1a1e26;
+  border-radius: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.slide-active {
+  font-size: 18px;
+  font-weight: bold;
+  color: #00ffa3;
+}
+
+.slide-slash {
+  font-size: 14px;
+  color: #666666;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.slide-total {
+  font-size: 15px;
+  color: #cccccc;
+}
+
+/* Barra de título */
+.title-bar {
+  width: 402px;
+  height: 36px;
+  padding-left: 28px;
+  padding-right: 28px;
+  display: flex;
+  justify-content: center;
+  border-bottom-width: 1px;
+  border-bottom-color: #16181f;
+}
+
+.slide-title {
+  font-size: 15px;
+  color: #00e5ff;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  max-lines: 1;
+}
+
+/* Scroll del teleprompter */
+.prompter-scroll {
+  width: 402px;
+  height: 330px;
+}
+
+.prompter-inner {
+  width: 402px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 14px;
+  padding-bottom: 50px;
+}
+
+.prompter-text {
+  font-size: 22px;
+  line-height: 34px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+/* Zonas de pulsación en bordes */
+.edge-left {
+  position: absolute;
+  left: 0px;
+  top: 90px;
+  width: 50px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edge-right {
+  position: absolute;
+  right: 0px;
+  top: 90px;
+  width: 50px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edge-icon {
+  font-size: 30px;
+  color: rgba(0, 255, 163, 0.35);
+  font-weight: bold;
+}
+
+/* Barra de herramientas inferior */
+.bottom-tools {
+  position: absolute;
+  bottom: 12px;
+  left: 80px;
+  width: 242px;
+  height: 44px;
+  background-color: #12141a;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-width: 1px;
+  border-color: #2a2e3a;
+}
+
+.tool-btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 6px 12px;
+}
+
+.btn-play {
+  color: #00ffa3;
+  font-size: 18px;
+}

@@ -1,0 +1,38 @@
+<div class="container" onswipe="handleSwipe" onkey="handleKeyEvent">
+  <!-- Barra de estado superior: Reloj y Contador de Diapositivas -->
+  <div class="status-bar">
+    <text class="time-text">{{ currentTime }}</text>
+    <div class="slide-badge">
+      <text class="slide-active">{{ currentSlide }}</text>
+      <text class="slide-slash">/</text>
+      <text class="slide-total">{{ totalSlides }}</text>
+    </div>
+  </div>
+
+  <!-- Título de la diapositiva activa -->
+  <div class="title-bar">
+    <text class="slide-title">{{ slideTitle }}</text>
+  </div>
+
+  <!-- Cuerpo del Teleprompter con soporte para scroll de corona digital -->
+  <scroll class="prompter-scroll" id="prompterScroll">
+    <div class="prompter-inner">
+      <text class="prompter-text">{{ speakerNotes }}</text>
+    </div>
+  </scroll>
+
+  <!-- Botones táctiles transparentes en los bordes para avanzar/retroceder sin mirar -->
+  <div class="edge-left" onclick="onPrevSlide">
+    <text class="edge-icon">‹</text>
+  </div>
+  <div class="edge-right" onclick="onNextSlide">
+    <text class="edge-icon">›</text>
+  </div>
+
+  <!-- Barra inferior de herramientas (Auto-scroll & Tamaño de letra) -->
+  <div class="bottom-tools">
+    <text class="tool-btn" onclick="decreaseFont">A-</text>
+    <text class="tool-btn btn-play" onclick="toggleAutoScroll">{{ isAutoScrolling ? '❚❚' : '▶' }}</text>
+    <text class="tool-btn" onclick="increaseFont">A+</text>
+  </div>
+</div>

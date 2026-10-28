@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0C0E14"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Huawei Fit 3 Bridge"
+        android:textColor="#00FFA3"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Puente de comunicación Laptop Wi-Fi ↔ Reloj Bluetooth"
+        android:textColor="#88FFFFFF"
+        android:textSize="13sp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Formulario IP -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/editServerIp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#161A22"
+            android:hint="Ej: 192.168.1.50"
+            android:textColorHint="#55FFFFFF"
+            android:textColor="#FFFFFF"
+            android:padding="12dp"
+            android:inputType="textUri"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Conectar"
+            android:backgroundTint="#00FFA3"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Estados -->
+    <TextView
+        android:id="@+id/txtWsStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estado Laptop: Desconectado"
+        android:textColor="#FFAA00"
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtWatchStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estado Reloj: Buscando..."
+        android:textColor="#00E5FF"
+        android:textSize="14sp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/txtCurrentSlide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diapositiva Activa: -"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Previsualización de notas -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Último paquete enviado al reloj:"
+        android:textColor="#66FFFFFF"
+        android:textSize="12sp"
+        android:layout_marginBottom="4dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#12151B"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/txtNotesPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esperando diapositivas..."
+            android:textColor="#CCCCCC"
+            android:fontFamily="monospace"
+            android:textSize="12sp" />
+    </ScrollView>
+</LinearLayout>

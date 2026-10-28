@@ -1,0 +1,30 @@
+{
+  "presentation_title": "Presentación Demo: Smartwatch Teleprompter",
+  "slides": [
+    {
+      "slide_number": 1,
+      "title": "Bienvenida y Presentación del Proyecto",
+      "notes": "Buenos días a todos. Bienvenidos a la presentación de arquitectura del sistema Smartwatch Teleprompter para Huawei Watch Fit 3. Hoy demostraremos cómo sincronizar diapositivas de PowerPoint con feedback háptico y notas de orador en tiempo real con cero latencia."
+    },
+    {
+      "slide_number": 2,
+      "title": "Problema: Dependencia de Pantallas y Pérdida de Contacto Visual",
+      "notes": "Cuando un orador expone, suele voltear constantemente a mirar la laptop o la pantalla grande. Esto rompe el contacto visual con el público y proyecta inseguridad. Nuestro objetivo es llevar las notas clave y el control directamente a la muñeca de forma discreta."
+    },
+    {
+      "slide_number": 3,
+      "title": "Arquitectura de 3 Capas + Modo Simulador",
+      "notes": "El sistema se divide en tres nodos: Primero, el Servidor en Laptop Windows que controla PowerPoint vía COM y WebSockets. Segundo, el Teléfono Android como puente Bluetooth y simulador Web PWA inmediato. Tercero, la app nativa en el Huawei Watch Fit 3 con pantalla AMOLED 402x480."
+    },
+    {
+      "slide_number": 4,
+      "title": "Huawei Watch Fit 3: Teleprompter & Háptica",
+      "notes": "Aprovechamos la pantalla AMOLED de 402x480 píxeles con fondo negro puro para máximo ahorro de batería. La corona digital permite hacer scroll en el texto sin tapar las palabras con los dedos. Cada cambio de diapositiva emite una pulsación háptica sutil para confirmar la acción."
+    },
+    {
+      "slide_number": 5,
+      "title": "Demostración en Vivo y Conclusiones",
+      "notes": "Procedemos con la demostración en vivo usando el simulador y la conexión en red local. Gracias por su atención. Quedo atento a sus preguntas sobre la implementación técnica y el empaquetado del software."
+    }
+  ]
+}

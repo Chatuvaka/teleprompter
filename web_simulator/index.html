@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Huawei Watch Fit 3 - Teleprompter Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+
+  <!-- Barra superior informativa (solo visible en computadoras de escritorio) -->
+  <header class="desktop-header">
+    <div class="logo-area">
+      <span class="brand-badge">HUAWEI</span>
+      <h1 class="main-title">Watch Fit 3 <span class="highlight">Teleprompter</span></h1>
+    </div>
+    <div class="status-pill" id="globalStatusPill">
+      <span class="status-dot disconnected" id="statusDot"></span>
+      <span class="status-text" id="statusText">Conectando...</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn-action" id="btnTogglePresentation" title="Iniciar/Salir Pantalla Completa en PowerPoint">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <span id="txtPresentationMode">F5 Proyectar</span>
+      </button>
+      <button class="btn-action" id="btnFullscreen" title="Pantalla Completa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Contenedor del Smartwatch Fit 3 -->
+  <main class="viewport-wrapper">
+    <div class="watch-case" id="watchCase">
+      <!-- Corona Digital Giratoria Lateral (Hardware simulation) -->
+      <div class="digital-crown" id="digitalCrown" title="Gira la rueda del ratón aquí para simular la Corona">
+        <div class="crown-ridges"></div>
+      </div>
+      <!-- Botón de función inferior del Fit 3 -->
+      <div class="function-button" id="functionButton" title="Botón Físico de Función"></div>
+
+      <!-- Pantalla AMOLED 402x480 con esquinas redondeadas -->
+      <div class="amoled-screen" id="watchScreen">
+        
+        <!-- Barra de Estado del Reloj (Reloj digital + Slide Counter) -->
+        <div class="watch-status-bar">
+          <div class="watch-clock" id="watchClock">10:42</div>
+          <div class="slide-badge" id="slideBadge">
+            <span class="current-slide" id="currentSlideNum">1</span>
+            <span class="slide-divider">/</span>
+            <span class="total-slides" id="totalSlidesNum">5</span>
+          </div>
+          <div class="connection-icon" id="watchConnectionIcon" title="Conexión WebSocket">
+            <div class="pulse-ring"></div>
+            <div class="dot-core"></div>
+          </div>
+        </div>
+
+        <!-- Título de la diapositiva actual -->
+        <div class="slide-header">
+          <h2 class="slide-title" id="slideTitle">Cargando diapositiva...</h2>
+        </div>
+
+        <!-- Área Central: Teleprompter con auto-scroll y corona -->
+        <div class="teleprompter-viewport" id="teleprompterViewport">
+          <div class="teleprompter-content" id="teleprompterContent">
+            Esperando conexión con PowerPoint...
+          </div>
+        </div>
+
+        <!-- Barra flotante de herramientas de lectura (tamaño texto & auto-scroll) -->
+        <div class="reading-controls">
+          <button class="btn-micro" id="btnFontDec" title="Disminuir texto">A-</button>
+          <button class="btn-micro btn-autoscroll" id="btnToggleScroll" title="Auto-scroll Play/Pause">
+            <span id="scrollIcon">▶</span>
+          </button>
+          <button class="btn-micro" id="btnFontInc" title="Aumentar texto">A+</button>
+          <div class="speed-selector" id="speedBadge" title="Velocidad de Scroll">1x</div>
+        </div>
+
+        <!-- Zonas Táctiles para cambio sin mirar (Borde Izquierdo y Borde Derecho) -->
+        <div class="touch-edge edge-left" id="touchPrev" title="Toque rápido para Diapositiva Anterior">
+          <div class="touch-cue">‹</div>
+        </div>
+        <div class="touch-edge edge-right" id="touchNext" title="Toque rápido para Siguiente Diapositiva">
+          <div class="touch-cue">›</div>
+        </div>
+
+        <!-- Alerta háptica visual instantánea -->
+        <div class="haptic-flash" id="hapticFlash"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Panel de control de simulación y atajos para PC/Móvil -->
+  <footer class="simulator-toolbar">
+    <div class="toolbar-shortcuts">
+      <div class="shortcut-chip"><kbd>Espacio</kbd> Siguiente</div>
+      <div class="shortcut-chip"><kbd>←</kbd> <kbd>→</kbd> Diapositivas</div>
+      <div class="shortcut-chip"><kbd>Rueda Ratón</kbd> Corona Fit 3</div>
+      <div class="shortcut-chip"><kbd>Swipe</kbd> Gestos Táctiles</div>
+    </div>
+    <div class="toolbar-buttons">
+      <button class="btn-tool" id="btnToolbarPrev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        Anterior
+      </button>
+      <button class="btn-tool btn-primary" id="btnToolbarNext">
+        Siguiente
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
